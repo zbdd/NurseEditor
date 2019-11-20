@@ -103,6 +103,14 @@
             }
         },
         {
+            "Key": "46213d0c-459b-4ebf-aa5e-240c8433bcee",
+            "Value": {
+                "id": "bb0fc299-15f8-47f5-9ab9-e10629a0e701",
+                "resourcePath": "sprites\/sp_button\/sp_button.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "4b625a77-3b82-435b-a315-8e594cad0acd",
             "Value": {
                 "id": "17cceeab-93ad-4875-a3f0-d92a768dce0e",
@@ -139,6 +147,14 @@
             "Value": {
                 "id": "5a39489a-95dc-420d-bd85-ba8335361956",
                 "resourcePath": "objects\/o_object\/o_object.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "77590098-1277-4b85-a930-364cdefa8567",
+            "Value": {
+                "id": "9a59fcbe-a55c-4f3f-af71-3e71ef8abf2e",
+                "resourcePath": "objects\/o_button\/o_button.yy",
                 "resourceType": "GMObject"
             }
         },
@@ -255,11 +271,27 @@
             }
         },
         {
+            "Key": "e72cf94d-83f1-41ea-b19d-a5256c4d4b9a",
+            "Value": {
+                "id": "1324d2ea-675d-4687-a969-b009befdb078",
+                "resourcePath": "scripts\/testenv1\/testenv1.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "e9392dbd-8bf4-4c11-8913-3ef5a50c4349",
             "Value": {
                 "id": "a2b35fff-f3a2-4fd4-84dc-4e633e55a423",
                 "resourcePath": "objects\/o_mouse\/o_mouse.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "f3828ea3-a9d3-484a-b548-1aa926bcdc0a",
+            "Value": {
+                "id": "f3b0a4c0-fe7f-4fca-b395-c063a639647f",
+                "resourcePath": "sprites\/sp_bounding_box\/sp_bounding_box.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
@@ -281,7 +313,8 @@
     ],
     "script_order": [
         "176ec308-f18c-4d8a-8964-5cdde7c116a8",
-        "b9db7b82-2e25-41bd-8ce0-7b6b5a76a2fe"
+        "b9db7b82-2e25-41bd-8ce0-7b6b5a76a2fe",
+        "e72cf94d-83f1-41ea-b19d-a5256c4d4b9a"
     ],
     "tutorial": ""
 }
