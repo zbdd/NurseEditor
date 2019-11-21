@@ -263,6 +263,14 @@
             }
         },
         {
+            "Key": "c68cb57e-5ea2-4ec7-acc8-17623d40cf16",
+            "Value": {
+                "id": "50a61aa4-36d5-4214-b442-6df105899c36",
+                "resourcePath": "objects\/o_body\/o_body.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "cbe4977a-3dbf-4116-912a-9b16958afeb3",
             "Value": {
                 "id": "612d443e-d9a9-43c9-afaf-a911dc4a5b10",
@@ -346,10 +354,10 @@
     "script_order": [
         "176ec308-f18c-4d8a-8964-5cdde7c116a8",
         "b9db7b82-2e25-41bd-8ce0-7b6b5a76a2fe",
-        "e72cf94d-83f1-41ea-b19d-a5256c4d4b9a",
         "5e886e28-c140-4851-b2d8-ec46d2adf87f",
         "4ce5312e-8476-4b93-85e2-4e74d9a8407a",
-        "9e50db20-4b4c-466b-aa80-af1320e1328b"
+        "9e50db20-4b4c-466b-aa80-af1320e1328b",
+        "e72cf94d-83f1-41ea-b19d-a5256c4d4b9a"
     ],
     "tutorial": ""
 }

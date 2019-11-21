@@ -29,7 +29,6 @@ if state != "inactive" {
 			if merge_attempt != 1 and can_place next_state = "active"
 		} else if button_pressed == mb_right {
 			next_state = "active"
-			show_debug_message("pants")
 			x = orig_x
 			y = orig_y
 		}
