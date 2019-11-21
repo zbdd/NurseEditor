@@ -15,13 +15,13 @@ for(var i=0;i<ds_list_size(inst_list);i++) {
 	var inst = inst_list[| i]
 
 	if instance_exists(inst) {
-		var position = ds_list_find_index(inst.relations,self)
+		var position = ds_list_find_index(relations,inst)
 		if  position <= -1 {
 			if inst != self
 				if inst.allow_add {
 					if !do_merge return 1
 					
-					ds_list_add(inst.relations,self)
+					ds_list_add(relations,inst)
 					log_add(name,"connected to: " + inst.name)
 					
 					return 1
@@ -30,8 +30,8 @@ for(var i=0;i<ds_list_size(inst_list);i++) {
 			if inst != self
 			if !do_merge return 1
 			
-			ds_list_delete(inst.relations,position)
-			log_add(name,"disconnected from to: " + inst.name)
+			ds_list_delete(relations,position)
+			log_add(name,"disconnected from: " + inst.name)
 					
 			return 0
 		}
