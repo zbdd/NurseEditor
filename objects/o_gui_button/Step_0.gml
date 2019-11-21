@@ -5,6 +5,11 @@ image_xscale = string_width(text)/sprite_width
 image_yscale = string_height(text)/sprite_height
 
 if state == "on_click" {
+	
+	if is_editor_button {
+		var inst = instance_find(o_editor,0)
+		inst.next_state = "load_next"
+	}
 	next_state = "waiting"
 	alarm[0] = room_speed * 1
 }

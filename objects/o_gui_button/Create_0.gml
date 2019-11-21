@@ -6,3 +6,5 @@ text = "default"
 state = "inactive"
 next_state = "active"
 is_moveable = false
+
+is_editor_button = false

@@ -10,7 +10,7 @@ if state != "inactive" {
 			draw_arrow(x,y,item.x,item.y,20)
 			
 			draw_set_color(c_black)
-			draw_text(item.x,item.y,item.name)
+			//draw_text(item.x,item.y,item.name)
 		}
 	}
 	
@@ -25,4 +25,6 @@ if state != "inactive" {
 		}
 	}
 }
+draw_set_colour(c_black)
+draw_text(x,y,object_get_name(object_index))
 draw_self()

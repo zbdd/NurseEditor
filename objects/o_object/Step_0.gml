@@ -50,4 +50,6 @@ if state != "inactive" {
 	}
 	
 	if force_relations_position relations_position_set()
+	
+	if state == "destroy_self" instance_destroy()
 }
