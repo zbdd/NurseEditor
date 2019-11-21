@@ -16,3 +16,20 @@ if state == "load_next" {
 		}
 	}
 }
+
+if state == "development" {
+	if ds_list_size(menu_items) == 0 {
+		show_debug_message("sadasd")
+		var btn_spawn = instance_create_layer(50,425,"Objects",o_spawn)
+		btn_spawn.spawn_object = o_button
+		ds_list_add(menu_items,btn_spawn)
+
+		btn_spawn = instance_create_layer(50,490,"Objects",o_spawn)
+		btn_spawn.spawn_object = o_body
+		ds_list_add(menu_items,btn_spawn)
+
+		btn_spawn = instance_create_layer(50,555,"Objects",o_spawn)
+		btn_spawn.spawn_object = o_event
+		ds_list_add(menu_items,btn_spawn)
+	}
+}

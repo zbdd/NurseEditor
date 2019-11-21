@@ -4,9 +4,9 @@
 // Inherit the parent event
 event_inherited();
 
-if state == "inactive" {
+if sprite_index !=  object_get_sprite(spawn_object) {
 	sprite_index = object_get_sprite(spawn_object)
-	name = "btn_spawn"		
+	name = "btn_spawn_" + object_get_name(spawn_object)		
 }
 
 if state == "on_click" {

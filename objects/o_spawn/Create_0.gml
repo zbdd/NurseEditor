@@ -5,7 +5,7 @@
 event_inherited();
 is_moveable = false
 spawn_object = o_object
-display_sizepx = 64
+display_sizepx = 128
 can_spawn = false
 name = "spawn"
 

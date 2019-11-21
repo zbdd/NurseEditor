@@ -11,5 +11,5 @@ if state == "on_click" {
 		inst.next_state = "load_next"
 	}
 	next_state = "waiting"
-	alarm[0] = room_speed * 1
+	alarm[0] = room_speed * 0.2
 }
