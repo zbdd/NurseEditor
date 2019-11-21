@@ -22,11 +22,10 @@ instance_create_layer(110,25,"Objects",o_gui_button)
 
 //
 var btn_spawn = instance_create_layer(64,425,"Objects",o_spawn)
-btn_spawn.sprite_index = sp_button
-btn_spawn.name = "btn_spawn"
 btn_spawn.spawn_object = o_button
 
 var btn_spawn = instance_create_layer(64,490,"Objects",o_spawn)
-btn_spawn.sprite_index = sp_person
-btn_spawn.name = "body_spawn"
 btn_spawn.spawn_object = o_body
+
+var btn_spawn = instance_create_layer(64,555,"Objects",o_spawn)
+btn_spawn.spawn_object = o_event
