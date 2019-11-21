@@ -8,12 +8,10 @@ if instance_exists(inst) {
 	var_list = variable_instance_get_names(inst)
 	
 	if left_click {
-		if instance_exists(inst_focus)
-			inst_focus.button_pressed = mb_left
-		else {
+		if inst == inst_focus || !instance_exists(inst_focus) {
 			inst.button_pressed = mb_left
 			inst_focus = inst
-		}
+		} else inst_focus.button_pressed = mb_left
 	}
 	else if right_click {
 		inst.button_pressed = mb_right

@@ -5,5 +5,4 @@ name = "gui_button"
 text = "default"
 state = "inactive"
 next_state = "active"
-
 is_moveable = false

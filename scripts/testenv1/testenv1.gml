@@ -18,7 +18,7 @@ obj.allow_add = true
 instance_create_layer(0,0,"Instances",o_gui)
 instance_create_layer(544,160,"Objects",o_mouse)
 instance_create_layer(64,360,"Objects",o_spawn)
-instance_create_layer(110,25,"Objects",o_gui_button)
+instance_create_layer(200,30,"Objects",o_gui_button)
 
 //
 var btn_spawn = instance_create_layer(64,425,"Objects",o_spawn)

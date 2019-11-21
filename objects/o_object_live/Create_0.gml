@@ -5,7 +5,6 @@ is_moveable = true
 is_clickable = true
 state = "inactive"
 next_state = "active"
-prev_state = "inactive"
 button_pressed = false
 allow_add = true
 relations = ds_list_create()
