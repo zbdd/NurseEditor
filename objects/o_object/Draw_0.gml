@@ -7,7 +7,7 @@ if state != "inactive" {
 		if item == undefined continue
 		if instance_exists(item) {
 			draw_set_color(c_green)
-			draw_line(x,y,item.x,item.y)
+			draw_arrow(x,y,item.x,item.y,20)
 			
 			draw_set_color(c_black)
 			draw_text(item.x,item.y,item.name)
