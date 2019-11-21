@@ -1,5 +1,9 @@
 /// @param do_merge
-var do_merge = false
+/*	1 = did merge
+	0 = did de-merge
+	-1 = nothing happened
+*/
+var do_merge = -1
 if argument_count > 0
 	do_merge = argument[0]
 	
@@ -15,22 +19,22 @@ for(var i=0;i<ds_list_size(inst_list);i++) {
 		if  position <= -1 {
 			if inst != self
 				if inst.allow_add {
-					if !do_merge return true
+					if !do_merge return 1
 					
 					ds_list_add(inst.relations,self)
 					log_add(name,"connected to: " + inst.name)
 					
-					return true
+					return 1
 				}
 		} else {
 			if inst != self
-			if !do_merge return true
+			if !do_merge return 1
 			
 			ds_list_delete(inst.relations,position)
 			log_add(name,"disconnected from to: " + inst.name)
 					
-			return true
+			return 0
 		}
 	}
 }
-return false
+return -1
