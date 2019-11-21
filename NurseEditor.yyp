@@ -135,6 +135,14 @@
             }
         },
         {
+            "Key": "5e886e28-c140-4851-b2d8-ec46d2adf87f",
+            "Value": {
+                "id": "edf68264-3d13-4aeb-bc97-391777c8543b",
+                "resourcePath": "scripts\/attempt_merge_at_position\/attempt_merge_at_position.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "62357d2a-3a3f-4ab9-aa5f-2c9d89aa7b0b",
             "Value": {
                 "id": "1a5df7b6-d147-43ee-b854-1c27b4a4b6f5",
@@ -263,6 +271,14 @@
             }
         },
         {
+            "Key": "d8ab4ead-a971-4272-b8c2-b2275008c636",
+            "Value": {
+                "id": "51456362-43d4-4c2a-b0ce-42ba45a50a70",
+                "resourcePath": "objects\/o_spawnlet\/o_spawnlet.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "dfe1faea-a733-4591-8f9f-3307ded8a59d",
             "Value": {
                 "id": "18417f05-7d32-455a-bd18-aa3e8b79cb06",
@@ -314,7 +330,8 @@
     "script_order": [
         "176ec308-f18c-4d8a-8964-5cdde7c116a8",
         "b9db7b82-2e25-41bd-8ce0-7b6b5a76a2fe",
-        "e72cf94d-83f1-41ea-b19d-a5256c4d4b9a"
+        "e72cf94d-83f1-41ea-b19d-a5256c4d4b9a",
+        "5e886e28-c140-4851-b2d8-ec46d2adf87f"
     ],
     "tutorial": ""
 }

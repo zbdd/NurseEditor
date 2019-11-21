@@ -3,26 +3,31 @@
 if state != "inactive" {
 	var size = ds_list_size(relations)
 	if size > 0 {
-	var positions = 360/size
-	var angle = 360
+		var positions = 360/size
+		var angle = 360
 	
-	for(var i=0; i<size;i++) {
-		var item = relations[| i]
-		if instance_exists(item) {
-			angle -= positions
-			//show_debug_message(string(angle))
+		for(var i=0; i<size;i++) {
+			var item = relations[| i]
+			if instance_exists(item) {
+				angle -= positions
 			
-			if angle <= 0 || angle >= 360 {
-				//show_debug_message(string(angle))
-				item.x = x + radius
-				item.y = y	
-			} else {
-				item.x = x + lengthdir_x(radius,angle)
-				item.y = y + lengthdir_y(radius,angle)
+				if angle <= 0 || angle >= 360 {
+					item.x = x + radius
+					item.y = y	
+				} else {
+					item.x = x + lengthdir_x(radius,angle)
+					item.y = y + lengthdir_y(radius,angle)
+				}
+				draw_text(item.x,item.y,item.name)
 			}
-			draw_text(item.x,item.y,item.name)
 		}
 	}
+	
+	if state == "hovering" {
+		if attempt_merge_at_position(false) {
+			draw_set_color(c_yellow)
+			draw_circle(x,y,abs(bbox_left)-abs(bbox_right),false)
+		}
 	}
 }
 draw_self()

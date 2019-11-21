@@ -3,7 +3,7 @@
 
 // Inherit the parent event
 event_inherited();
-is_moveable = false
+is_moveable = true
 spawn_object = o_object
 can_spawn = false
-name = "spawn"
+name = "spawnlet"

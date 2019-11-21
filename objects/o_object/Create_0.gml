@@ -9,3 +9,4 @@ has_been_pressed = false
 allow_add = false
 relations = ds_list_create()
 radius = 120
+can_place = false
