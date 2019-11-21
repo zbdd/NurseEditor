@@ -9,6 +9,8 @@ with (instance_find(o_gui,0)) {
 		
 		draw_set_colour(c_white)
 		draw_text(0,top_height,"Object properties")
+		if instance_exists(other.inst)
+				draw_text(0,top_height+log_y_buffer,"ID: " + string(other.inst.id))
 		
 		for (var i =0;i<array_length_1d(other.var_list);i++) {
 			var variable = other.var_list[i]
@@ -17,7 +19,7 @@ with (instance_find(o_gui,0)) {
 				if variable == "relations" inst_got = ds_list_size(inst_got)
 				
 				var text_to_display = variable + ": " + string(inst_got)
-				var yy = top_height+(i+1)*log_y_buffer
+				var yy = top_height+(i+2)*log_y_buffer
 				
 				draw_set_colour(c_black)
 				draw_rectangle(0,yy,string_width(text_to_display),yy+string_height(text_to_display),false)
@@ -40,13 +42,14 @@ with (instance_find(o_gui,0)) {
 		
 		draw_set_colour(c_white)
 		draw_text(0,height_percent*80,"Mouse properties")
+		draw_text(0,height_percent*80+log_y_buffer,"ID: " + string(other.id))
 
 		for (var i =0;i<array_length_1d(inst_list);i++) {
 			var variable = inst_list[i]
 			if variable == "var_list" continue
 
 			var text_to_display = variable + ": " + string(variable_instance_get(other,variable))
-			var yy = height_percent*80+(i+1)*log_y_buffer
+			var yy = height_percent*80+(i+2)*log_y_buffer
 				
 			draw_set_colour(c_black)
 			draw_rectangle(0,yy,string_width(text_to_display),yy+string_height(text_to_display),false)

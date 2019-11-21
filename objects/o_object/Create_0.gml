@@ -8,5 +8,6 @@ next_state = "active"
 has_been_pressed = false
 allow_add = false
 relations = ds_list_create()
-radius = 120
+radius = point_distance(bbox_left,bbox_top,bbox_right,bbox_bottom)/2 + 1
 can_place = false
+size = 0

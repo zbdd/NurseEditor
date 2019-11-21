@@ -12,6 +12,9 @@ little_obj = instance_create_layer(544,600,"Objects",o_object)
 little_obj.name = "little three"
 ds_list_add(obj.relations,little_obj)
 
+obj = instance_create_layer(200,160,"Objects",o_object)
+obj.allow_add = true
+
 instance_create_layer(0,0,"Instances",o_gui)
 instance_create_layer(544,160,"Objects",o_mouse)
 instance_create_layer(64,352,"Objects",o_spawn)
