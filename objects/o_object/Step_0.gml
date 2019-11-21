@@ -24,7 +24,6 @@ if state != "inactive" {
 			mouse_set_variable("inst_focus",noone)	
 			
 			var merge_attempt = attempt_merge_at_position(true)
-			if merge_attempt == 1 next_state = "active"
 			
 			if merge_attempt != 1 and can_place next_state = "active"
 		} else if button_pressed == mb_right {
