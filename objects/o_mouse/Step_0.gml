@@ -10,7 +10,6 @@ if instance_exists(inst) {
 	if left_click {
 		if inst == inst_focus || !instance_exists(inst_focus) {
 			inst.button_pressed = mb_left
-			inst_focus = inst
 		} else inst_focus.button_pressed = mb_left
 	}
 	else if right_click {
