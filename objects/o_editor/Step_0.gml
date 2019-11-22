@@ -27,12 +27,11 @@ if state != "inactive" {
 		if file != -1 {
 		var old_id_key = ""
 		
-		
-		
 		if !file_text_eof(file) {
 			json = file_text_readln(file)
 		var old_ids = json_decode(json)
 		old_id_key = ds_map_find_first(old_ids)
+
 		do {		
 
 			inst = noone

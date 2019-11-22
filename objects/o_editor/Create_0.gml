@@ -19,7 +19,7 @@ instance_create_layer(544,160,"Objects",o_mouse)
 save_map = ds_map_create()
 
 test = 2
-if file_exists("dev.json") {
+if file_exists("/Users/zbdd/GameMakerStudio2/NurseEditor/dev.json") {
 	next_state = "load_game"
 }
 else {
