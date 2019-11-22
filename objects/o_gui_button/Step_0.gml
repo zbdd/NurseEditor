@@ -8,7 +8,7 @@ if state == "on_click" {
 	
 	if is_editor_button {
 		var inst = instance_find(o_editor,0)
-		inst.next_state = "load_next"
+		inst.command = name
 	}
 	next_state = "waiting"
 	alarm[0] = room_speed * 0.2

@@ -1,5 +1,158 @@
 /// @description Insert description here
 // You can write your code in this editor
+
+if state != "inactive" {
+	if command != noone
+		if is_string(command)
+			switch (command) {
+				case "btn_live":
+					next_state = "load_next"
+				case "btn_save":
+					next_state = "save_game"
+				case "btn_close":
+				
+				command = noone
+			}
+	
+	if state == "load_game" {
+		var json = ""
+		var size = instance_number(o_object)
+		var inst_map = ds_map_create()
+		
+		
+		var file = file_text_open_read("/Users/zbdd/GameMakerStudio2/NurseEditor/dev.json")
+		var old_id_key = ""
+		json = file_text_readln(file)
+		var old_ids = json_decode(json)
+		old_id_key = ds_map_find_first(old_ids)
+		do {		
+			inst = noone
+			var old_json = old_ids[? old_id_key]
+			var inst_map = json_decode(old_json)
+			var inst_key = ds_map_find_first(inst_map)
+			
+			do {
+				var asset = asset_get_index(inst_key)
+				if !asset {
+					old_json = old_ids[? asset]
+					inst_map = json_decode(old_json)
+					inst_key = ds_map_find_first(inst_map)
+				}
+				inst = instance_create_layer(x,y,"Objects",asset)
+				inst.old_id = old_id_key
+				
+					
+				do {
+					var var_json = inst_map[? inst_key]
+					var var_map = json_decode(var_json)
+					var var_key = ds_map_find_first(var_map)
+
+					do {
+						var var_value = var_map[? var_key]
+							
+						if is_undefined(var_key) continue
+						if var_key == "relations" {
+							var_value = json_decode(var_value)
+						}
+						if var_key == "orig_x" {
+							inst.x = var_value
+						}
+						if var_key == "orig_y" {
+							inst.y = var_value
+						}
+						variable_instance_set(inst,var_key,var_value)
+						var_key = ds_map_find_next(var_map,var_key)
+					} until (is_undefined(var_key))
+				
+					var_key = ds_map_find_next(var_map,var_key)
+				} until (is_undefined(var_key))
+				inst_key = ds_map_find_next(inst_map,inst_key)
+			} until (is_undefined(inst_key))
+				
+			old_id_key = ds_map_find_next(old_ids,old_id_key)
+		} until (is_undefined(old_id_key))
+
+		file_text_close(file)
+		
+		var size = instance_number(o_object)
+		for(var i=0;i<size;i++) {
+			var inst = instance_find(o_object,i)
+			var new_r = ds_list_create()
+			//show_debug_message(string(typeof(inst.relations)))
+			if is_string(inst.relations) { inst.relations = new_r; continue }
+			
+			var key = ds_map_find_first(inst.relations)
+			do {
+				//show_debug_message("Running relations " + string(inst.relations))
+				for(var aa=0;aa<array_length_1d(inst.relations);aa++) {
+					var old_id = inst.relations[aa]
+					//show_debug_message("old id: " + string(old_id))
+					
+					for(var bb=0;bb<size;bb++) {
+						var inst_compare = instance_find(o_object,bb)
+						
+						if inst_compare.id == old_id { ds_list_add(new_r,inst_compare); break }		
+					}
+				}
+				key = ds_map_find_next(inst.relations,key)
+			} until (is_undefined(key))
+			inst.relations = new_r
+		}
+		
+		next_state = "development"
+	}
+	if state == "save_game" {
+		var json = ""
+		var var_map = ds_map_create()
+		var size = instance_number(o_object)
+		var inst_map = ds_map_create()
+		var obj_map = ds_map_create()
+		var inst_map = ds_map_create()
+		
+		for (var i=0;i<size;i++) {
+			var inst = instance_find(o_object,i)
+			if instance_exists(inst) {
+				if inst.object_index == o_gui_button continue
+				if inst.object_index == o_spawn continue
+				
+				var inst_var_names = variable_instance_get_names(inst)
+				
+				for (var aa =0; aa<array_length_1d(inst_var_names);aa++) {
+					var var_name = inst_var_names[aa]
+					var var_value = variable_instance_get(inst,var_name)
+					if var_name == "orig_x" var_value = inst.x
+					if var_name == "orig_y" var_value = inst.y
+					if var_name == "relations" {
+						var related_ids = ds_map_create()
+						for(var mi=0;mi<ds_list_size(var_value);mi++) {
+							ds_map_add(related_ids,mi,var_value[| mi])
+						}
+						var related_json = json_encode(related_ids)
+						var_value = related_json
+					}
+					
+					ds_map_add(var_map,var_name,var_value)
+				}	
+			}
+			json = json_encode(var_map)
+			ds_map_add(obj_map,object_get_name(inst.object_index),json)
+			json = json_encode(obj_map)
+			ds_map_add(inst_map,string(inst.id),json)
+			
+			json = ""
+			ds_map_clear(var_map)
+			ds_map_clear(obj_map)
+		}
+		
+		json = json_encode(inst_map)
+		var file = file_text_open_write("/Users/zbdd/GameMakerStudio2/NurseEditor/dev.json")
+		file_text_write_string(file,json)
+		file_text_close(file)
+		
+		next_state = prev_state
+	}
+}
+
 if state == "load_next" {
 	if prev_state == "development" next_state = "live"
 	else next_state = "development"
@@ -19,7 +172,6 @@ if state == "load_next" {
 
 if state == "development" {
 	if ds_list_size(menu_items) == 0 {
-		show_debug_message("sadasd")
 		var btn_spawn = instance_create_layer(50,425,"Objects",o_spawn)
 		btn_spawn.spawn_object = o_button
 		ds_list_add(menu_items,btn_spawn)
