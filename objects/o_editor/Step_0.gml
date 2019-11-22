@@ -2,6 +2,16 @@
 // You can write your code in this editor
 
 if state != "inactive" {
+	//handle events
+	for(var i=0;i<ds_list_size(global.events);i++) {
+		var event = global.events[| i]
+		//do thing
+		ds_list_add(global.done_events,event)
+		ds_list_delete(global.events,i)
+		
+	}
+	
+	
 	if command != noone
 		if is_string(command)
 			switch (command) {
@@ -30,6 +40,7 @@ if state != "inactive" {
 		var old_ids = json_decode(json)
 		old_id_key = ds_map_find_first(old_ids)
 		do {		
+
 			inst = noone
 			var old_json = old_ids[? old_id_key]
 			var inst_map = json_decode(old_json)
@@ -181,16 +192,11 @@ if state == "load_next" {
 
 if state == "development" {
 	if ds_list_size(menu_items) == 0 {
-		var btn_spawn = instance_create_layer(50,425,"Objects",o_spawn)
-		btn_spawn.spawn_object = o_button
-		ds_list_add(menu_items,btn_spawn)
-
-		btn_spawn = instance_create_layer(50,490,"Objects",o_spawn)
-		btn_spawn.spawn_object = o_body
-		ds_list_add(menu_items,btn_spawn)
-
-		btn_spawn = instance_create_layer(50,555,"Objects",o_spawn)
-		btn_spawn.spawn_object = o_event
-		ds_list_add(menu_items,btn_spawn)
+		development_env_spawn()
+	}
+	
+	//handle gui button states and shit
+	for(var i=0;i<instance_number(o_gui_button);i++) {	
+		
 	}
 }
