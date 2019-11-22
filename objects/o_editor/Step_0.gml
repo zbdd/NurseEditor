@@ -4,25 +4,18 @@
 if state != "inactive" {
 	//handle events
 	for(var i=0;i<ds_list_size(global.events);i++) {
-		var event = global.events[| i]
-		//do thing
-		ds_list_add(global.done_events,event)
-		ds_list_delete(global.events,i)
+		global.event = global.events[| i]
+		var event = global.event
 		
+		if event == "btn_live::pressed" next_state = "load_next"
+		if event == "btn_save::pressed" next_state = "save_game"
+		if event == "btn_clear::pressed" { delete_deletable_objects() }
+		if event == "btn_close::pressed" { }
+		if event == "btn_delete::pressed" { with instance_find(o_mouse,0) if delete_mode delete_mode = false else delete_mode = true }
+		
+		ds_list_add(global.done_events,event)	
+		ds_list_delete(global.events,i)
 	}
-	
-	
-	if command != noone
-		if is_string(command)
-			switch (command) {
-				case "btn_live":
-					next_state = "load_next"
-				case "btn_save":
-					next_state = "save_game"
-				case "btn_close":
-				
-				command = noone
-			}
 	
 	if state == "load_game" {
 		var json = ""
@@ -31,6 +24,7 @@ if state != "inactive" {
 		
 		
 		var file = file_text_open_read("/Users/zbdd/GameMakerStudio2/NurseEditor/dev.json")
+		if file != -1 {
 		var old_id_key = ""
 		
 		
@@ -117,6 +111,7 @@ if state != "inactive" {
 			inst.relations = new_r
 		}
 		}
+		}
 		
 		next_state = "development"
 	}
@@ -193,10 +188,5 @@ if state == "load_next" {
 if state == "development" {
 	if ds_list_size(menu_items) == 0 {
 		development_env_spawn()
-	}
-	
-	//handle gui button states and shit
-	for(var i=0;i<instance_number(o_gui_button);i++) {	
-		
 	}
 }

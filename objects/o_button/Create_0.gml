@@ -7,3 +7,4 @@ state = "inactive"
 next_state = "active"
 depth = layer_get_depth(layer_get_id("Buttons"))
 is_moveable = false
+can_delete = true

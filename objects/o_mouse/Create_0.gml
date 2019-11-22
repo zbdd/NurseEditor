@@ -3,3 +3,5 @@
 inst = noone
 inst_focus = noone
 var_list = noone
+delete_mode = false
+name = "mouse"

@@ -24,8 +24,12 @@ if variable_global_exists("log") {
 	}
 }
 height_offset = 0
+draw_set_colour(c_white)
+draw_text(right_width-200,log_height-100,"Global event" + string(global.event))
+
 draw_set_colour(c_black)
 draw_text(right_width-200,log_height,"Done events")
+
 if variable_global_exists("done_events") {
 	var list_size = ds_list_size(global.done_events)
 	for (var i=0;i<ds_list_size(global.done_events);i++) {		

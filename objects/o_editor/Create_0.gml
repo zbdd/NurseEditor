@@ -3,6 +3,7 @@
 global.log = ds_list_create()
 global.events = ds_list_create()
 global.done_events = ds_list_create()
+global.event = noone
 
 name = "EDITOR"
 state = "inactive"
@@ -18,7 +19,7 @@ instance_create_layer(544,160,"Objects",o_mouse)
 save_map = ds_map_create()
 
 test = 2
-if file_exists("dev.dat") {
+if file_exists("dev.json") {
 	next_state = "load_game"
 }
 else {

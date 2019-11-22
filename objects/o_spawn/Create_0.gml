@@ -8,6 +8,7 @@ spawn_object = o_object
 display_sizepx = 128
 can_spawn = false
 name = "spawn"
+can_delete = false
 
 image_xscale = display_sizepx/sprite_width
 image_yscale = display_sizepx/sprite_height

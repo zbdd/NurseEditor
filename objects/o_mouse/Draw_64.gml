@@ -1,7 +1,12 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-with (instance_find(o_gui,0)) {
+if sprite_index > 0 draw_self()
+
+var gui = instance_find(o_gui,0)
+if !instance_exists(gui) exit
+
+with (gui) {
 	if is_array(other.var_list) {
 		
 		draw_set_colour(c_black)
@@ -33,7 +38,7 @@ with (instance_find(o_gui,0)) {
 
 //
 
-with (instance_find(o_gui,0)) {
+with (gui) {
 	var inst_list = variable_instance_get_names(other)
 	
 	if is_array(inst_list) {

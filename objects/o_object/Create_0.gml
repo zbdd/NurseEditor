@@ -16,3 +16,4 @@ force_relations_position = false
 orig_x = x
 orig_y = y
 old_id = self
+can_delete = true
