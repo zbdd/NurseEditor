@@ -6,6 +6,7 @@ event_inherited();
 
 if state == "on_click" {
 	next_state = "wait_for_click"
+	mouse_set_variable("inst_focus",self)	
 
 }
 if state = "wait_for_click" {
@@ -26,4 +27,7 @@ if state = "wait_for_click" {
 	}
 	if right_click next_state = "self_destruct"	
 }
-if state == "self_destruct" instance_destroy()
+if state == "self_destruct" {
+	mouse_set_variable("inst_focus",noone)	
+	instance_destroy()
+}
