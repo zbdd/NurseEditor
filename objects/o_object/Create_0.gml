@@ -15,4 +15,4 @@ size = 0
 force_relations_position = false
 orig_x = x
 orig_y = y
-old_id = -1
+old_id = self

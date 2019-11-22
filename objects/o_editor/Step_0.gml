@@ -22,7 +22,11 @@ if state != "inactive" {
 		
 		var file = file_text_open_read("/Users/zbdd/GameMakerStudio2/NurseEditor/dev.json")
 		var old_id_key = ""
-		json = file_text_readln(file)
+		
+		
+		
+		if !file_text_eof(file) {
+			json = file_text_readln(file)
 		var old_ids = json_decode(json)
 		old_id_key = ds_map_find_first(old_ids)
 		do {		
@@ -39,8 +43,6 @@ if state != "inactive" {
 					inst_key = ds_map_find_first(inst_map)
 				}
 				inst = instance_create_layer(x,y,"Objects",asset)
-				inst.old_id = old_id_key
-				
 					
 				do {
 					var var_json = inst_map[? inst_key]
@@ -51,16 +53,26 @@ if state != "inactive" {
 						var var_value = var_map[? var_key]
 							
 						if is_undefined(var_key) continue
+						
 						if var_key == "relations" {
-							var_value = json_decode(var_value)
+							var rel_map = json_decode(var_value)
+							var rel_key = ds_map_find_first(rel_map)
+							new_relations = ds_list_create()
+							do {
+								var old_id = rel_map[? rel_key]
+								ds_list_add(new_relations,old_id)
+								rel_key = ds_map_find_next(rel_map,rel_key)
+							} until (is_undefined(rel_key))
+							inst.relations = new_relations
+						} else {
+							if var_key == "orig_x" {
+								inst.x = var_value
+							}
+							if var_key == "orig_y" {
+								inst.y = var_value
+							}
+							variable_instance_set(inst,var_key,var_value)
 						}
-						if var_key == "orig_x" {
-							inst.x = var_value
-						}
-						if var_key == "orig_y" {
-							inst.y = var_value
-						}
-						variable_instance_set(inst,var_key,var_value)
 						var_key = ds_map_find_next(var_map,var_key)
 					} until (is_undefined(var_key))
 				
@@ -74,29 +86,25 @@ if state != "inactive" {
 
 		file_text_close(file)
 		
+		
 		var size = instance_number(o_object)
 		for(var i=0;i<size;i++) {
 			var inst = instance_find(o_object,i)
 			var new_r = ds_list_create()
-			//show_debug_message(string(typeof(inst.relations)))
-			if is_string(inst.relations) { inst.relations = new_r; continue }
+			var rel_list = inst.relations
 			
-			var key = ds_map_find_first(inst.relations)
-			do {
-				//show_debug_message("Running relations " + string(inst.relations))
-				for(var aa=0;aa<array_length_1d(inst.relations);aa++) {
-					var old_id = inst.relations[aa]
-					//show_debug_message("old id: " + string(old_id))
+			for(var aa=0;aa<ds_list_size(rel_list);aa++) {
+				var old_id = rel_list[| aa]
+				if is_undefined(old_id) continue
+				
+				for(var bb=0;bb<size;bb++) {
+					var inst_compare = instance_find(o_object,bb)
 					
-					for(var bb=0;bb<size;bb++) {
-						var inst_compare = instance_find(o_object,bb)
-						
-						if inst_compare.id == old_id { ds_list_add(new_r,inst_compare); break }		
-					}
-				}
-				key = ds_map_find_next(inst.relations,key)
-			} until (is_undefined(key))
+					if inst_compare.old_id == old_id { ds_list_add(new_r,inst_compare.id); break }		
+				}	
+			}
 			inst.relations = new_r
+		}
 		}
 		
 		next_state = "development"
@@ -122,6 +130,7 @@ if state != "inactive" {
 					var var_value = variable_instance_get(inst,var_name)
 					if var_name == "orig_x" var_value = inst.x
 					if var_name == "orig_y" var_value = inst.y
+					if var_name == "old_id" var_value = inst.id
 					if var_name == "relations" {
 						var related_ids = ds_map_create()
 						for(var mi=0;mi<ds_list_size(var_value);mi++) {
