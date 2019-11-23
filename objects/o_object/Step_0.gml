@@ -35,9 +35,7 @@ if !is_live {
 		
 			if prev_state == "hovering" {
 				if button_pressed == mb_left {
-					var merge_attempt = attempt_merge_at_position(true)
-			
-					if merge_attempt != 1 and can_place next_state = "active"
+					if can_place next_state = "active"
 				} else if button_pressed == mb_right {
 					next_state = "active"
 					x = orig_x

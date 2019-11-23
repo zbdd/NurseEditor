@@ -9,10 +9,10 @@ if state != "inactive" {
 			draw_set_color(c_red)
 			draw_circle(x,y,radius,false)
 		}
-		if attempt_merge_at_position(false) {
+		/*if attempt_merge_at_position(false) {
 			draw_set_color(c_yellow)
 			draw_circle(x,y,radius,false)
-		}
+		}*/
 	}
 }
 draw_self()
