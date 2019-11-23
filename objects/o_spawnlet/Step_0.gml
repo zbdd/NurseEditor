@@ -22,7 +22,7 @@ if state = "wait_for_click" {
 	else can_spawn = true
 	
 	if left_click and can_spawn {
-		var obj = instance_create_layer(mouse_x,mouse_y,"Objects",spawn_object)
+		var obj = instance_create_layer(mouse_x,mouse_y,"Development",spawn_object)
 		next_state = "self_destruct"
 	}
 	if right_click next_state = "self_destruct"	

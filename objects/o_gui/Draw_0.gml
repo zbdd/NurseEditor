@@ -25,17 +25,17 @@ if variable_global_exists("log") {
 }
 height_offset = 0
 draw_set_colour(c_white)
-draw_text(right_width-200,log_height-100,"Global event" + string(global.event))
+draw_text(right_width-300,log_height-100,"Global event" + string(global.event))
 
 draw_set_colour(c_black)
-draw_text(right_width-200,log_height,"Done events")
+draw_text(right_width-300,log_height,"Done events")
 
 if variable_global_exists("done_events") {
 	var list_size = ds_list_size(global.done_events)
 	for (var i=0;i<ds_list_size(global.done_events);i++) {		
 		var logget = global.done_events[| i]
 		
-		draw_text_ext(right_width-200,log_height+log_y_buffer*(i+1)+height_offset,logget,log_y_buffer,right_width-200)
-		height_offset += string_height_ext(logget,log_y_buffer,right_width-200)
+		draw_text_ext(right_width-300,log_height+log_y_buffer*(i+1)+height_offset,logget,log_y_buffer,300)
+		height_offset += string_height_ext(logget,log_y_buffer,300)
 	}
 }

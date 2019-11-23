@@ -17,3 +17,4 @@ orig_x = x
 orig_y = y
 old_id = self
 can_delete = true
+is_live = false

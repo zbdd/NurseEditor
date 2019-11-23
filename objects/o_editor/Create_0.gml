@@ -14,7 +14,7 @@ command = noone
 menu_items = ds_list_create()
 
 instance_create_layer(0,0,"Instances",o_gui)
-instance_create_layer(544,160,"Objects",o_mouse)
+instance_create_layer(544,160,"Development",o_mouse)
 
 save_map = ds_map_create()
 

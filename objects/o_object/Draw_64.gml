@@ -13,4 +13,4 @@ for(var i=0; i<size;i++) {
 	}
 }
 draw_set_colour(c_black)
-draw_text(x,y,object_get_name(object_index))
+draw_text(x,y,name)

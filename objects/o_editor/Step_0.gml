@@ -33,9 +33,10 @@ if state != "inactive" {
 		old_id_key = ds_map_find_first(old_ids)
 
 		do {		
-
 			inst = noone
 			var old_json = old_ids[? old_id_key]
+			if is_undefined(old_json) break
+			
 			var inst_map = json_decode(old_json)
 			var inst_key = ds_map_find_first(inst_map)
 			
@@ -46,7 +47,7 @@ if state != "inactive" {
 					inst_map = json_decode(old_json)
 					inst_key = ds_map_find_first(inst_map)
 				}
-				inst = instance_create_layer(x,y,"Objects",asset)
+				inst = instance_create_layer(x,y,"Development",asset)
 					
 				do {
 					var var_json = inst_map[? inst_key]
@@ -172,14 +173,18 @@ if state == "load_next" {
 	else next_state = "development"
 	
 	if next_state == "live" {
-		var count = instance_number(o_body)
-		for(var i=0;i<count;i++) {
-			var inst = instance_find(o_body,i)
-			if instance_exists(inst) {
-				create_object_live_from(inst)
-				
-				inst.next_state = "destroy_self"
+		var live_objects = get_live_object_list()
+		var object = ds_stack_pop(live_objects)
+		while (!is_undefined(object)) {
+			var count = instance_number(object)
+			for(var i=0;i<count;i++) {
+				var inst = instance_find(object,i)
+				if instance_exists(inst) {
+					if variable_instance_exists(inst,"is_live")
+						inst.is_live = true
+				}
 			}
+			object = ds_stack_pop(live_objects)
 		}
 	}
 }
