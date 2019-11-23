@@ -5,3 +5,5 @@ inst_focus = noone
 var_list = noone
 delete_mode = false
 name = "mouse"
+mouse_press_timer = 0
+count_start = 0

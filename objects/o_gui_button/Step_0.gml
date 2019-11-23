@@ -6,7 +6,7 @@ image_yscale = string_height(text)/sprite_height
 
 if state != "inactive" {
 	if state == "on_click" {
-		if global.event == "mouse::left_click_pressed"  {
+		if global.event == "mouse::left_click_pressed_pressed"  {
 			events_add(name,"pressed")
 			next_state = "waiting"
 		
@@ -16,6 +16,6 @@ if state != "inactive" {
 		
 	}
 	if state == "waiting" {
-		if global.event == "mouse::right_click_pressed" next_state = "active"
+		if global.event == "mouse::right_click_pressed_pressed" next_state = "active"
 	}
 }
