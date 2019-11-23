@@ -2,18 +2,14 @@
 var list = argument0
 var positions = 130/1
 var angle = 0
-show_debug_message("List size: " + string(ds_list_size(list)))
+
 if !check_list_variable_value(list,"state","hovering") {
 	
-		positions = 90/4
-		angle = 360 - positions * ds_list_size(list) / 2
+	positions = 90/4
+	angle = 360 - positions * ds_list_size(list) / 2
 		
 	for(var i=0; i<ds_list_size(list);i++) {
 		var item = list[| i]
-		show_debug_message("List size: " + string(ds_list_size(list)))
-		
-		show_debug_message("Angle: " + string(angle))
-		show_debug_message("Pos: " + string(positions))	
 		if instance_exists(item) {
 			show_debug_message("Angle: " + string(angle))
 			angle += positions
@@ -25,4 +21,4 @@ if !check_list_variable_value(list,"state","hovering") {
 			item.y = y + lengthdir_y(2*radius,angle)
 		}
 	}
-	}
+}
