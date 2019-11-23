@@ -6,3 +6,4 @@ text = "default"
 state = "inactive"
 next_state = "active"
 can_delete = true
+has_menu = false

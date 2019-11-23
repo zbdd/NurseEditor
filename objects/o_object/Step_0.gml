@@ -26,7 +26,8 @@ if !is_live {
 			if button_pressed == mb_left {
 				if ds_list_size(options) <= 0 and has_menu {
 					options = object_menu_create(self)	
-				}
+				} else list_contents_destroy(options)
+				next_state = "active"
 			}	
 			if button_pressed == mb_right {
 				

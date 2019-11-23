@@ -14,8 +14,12 @@ btn_spawn = instance_create_layer(50,620,"Development",o_spawn)
 btn_spawn.spawn_object = o_item
 ds_list_add(menu_items,btn_spawn)
 
-event_test = event_create(300,685,"on_click")
-ds_list_add(menu_items,btn_spawn)
+event_test = event_create(300,400,"on_click")
+
+
+instance_create_layer(400,400,"Development",o_item)
+
+instance_create_layer(400,200,"Development",o_object)
 
 btn = instance_create_layer(200,30,"Buttons",o_gui_button)
 btn.name = "btn_live"

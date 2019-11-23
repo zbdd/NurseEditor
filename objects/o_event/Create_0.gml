@@ -3,4 +3,3 @@
 
 // Inherit the parent event
 event_inherited();
-has_menu = true

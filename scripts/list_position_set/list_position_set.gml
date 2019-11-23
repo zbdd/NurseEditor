@@ -11,7 +11,6 @@ if !check_list_variable_value(list,"state","hovering") {
 	for(var i=0; i<ds_list_size(list);i++) {
 		var item = list[| i]
 		if instance_exists(item) {
-			show_debug_message("Angle: " + string(angle))
 			angle += positions
 			
 			if angle < 0 angle+=360

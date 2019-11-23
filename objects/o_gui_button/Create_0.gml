@@ -9,3 +9,4 @@ is_moveable = false
 stays_pressed = false
 is_editor_button = false
 can_delete = false
+has_menu = false

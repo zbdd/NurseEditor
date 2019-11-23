@@ -19,4 +19,4 @@ old_id = self
 can_delete = true
 is_live = false
 options = ds_list_create()
-has_menu = false
+has_menu = true
