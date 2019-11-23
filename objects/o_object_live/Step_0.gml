@@ -43,7 +43,7 @@ if state != "inactive" {
 		}*/	
 	}
 	
-	if force_relations_position relations_position_set()
+//	if force_relations_position relations_position_set()
 	
 	button_pressed = false
 }

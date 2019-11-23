@@ -24,12 +24,8 @@ if !is_live {
 	
 		if state == "on_click" {
 			if button_pressed == mb_left {
-				if is_moveable {
-					display_mouse_set(x,y)
-					mouse_set_variable("inst_focus",id)
-					orig_x = x
-					orig_y = y
-					next_state = "hovering"
+				if ds_list_size(options) <= 0 and has_menu {
+					options = object_menu_create(self)	
 				}
 			}	
 			if button_pressed == mb_right {
@@ -53,6 +49,6 @@ if !is_live {
 		}
 	}	
 }
-if force_relations_position relations_position_set()
+if force_relations_position list_position_set(options)
 	
 if state == "destroy_self" instance_destroy()
