@@ -17,7 +17,7 @@ if left_click_released {
 	if mouse_press_timer <= 10 single_click = true
 	mouse_press_timer = 0
 }
-if left_click_released and single_click
+if (left_click_released and single_click) or right_click_released
 { // do old behaviour
 	mouse_press_timer = 0
 	count_start = false
