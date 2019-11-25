@@ -19,7 +19,8 @@ if state != "inactive" {
 	
 	if state == "on_click" {
 		if prev_state == "open" next_state = "active"
-		else next_state = "open"
+		else if !menu_find_open() next_state = "open"
+		else next_state = "active"
 	}
 	
 	if state == "open" {
