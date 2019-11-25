@@ -5,4 +5,4 @@ log[0] = "entry one"
 instance_create_layer(x,y,"Instances",o_gui)
 instance_create_layer(x,y,"Instances",o_state)
 
-test_menu_create(2)
+test_menu_create(20)
