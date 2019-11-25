@@ -11,5 +11,5 @@ for (var i=1;i<array_length_1d(game.log) and i<10 ;i++) {
 	
 	var text = game.log[array_length_1d(game.log) - i]
 	text_size = string_height(text)
-	draw_text(x,y+(i)*text_size,text)	
+	draw_text(x,y+(i)*text_size,string(array_length_1d(game.log) - i) + ": " + text)	
 }

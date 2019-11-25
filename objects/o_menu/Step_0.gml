@@ -4,17 +4,6 @@
 // Inherit the parent event
 event_inherited();
 
-var y_buffer = sprite_get_height(o_cube)*1.5
-var x_buffer = sprite_get_height(o_cube)*1.5
-var items_along_x = 4
-var items_along_y = 4
-var popup_x = x + x_buffer * 1
-var popup_y = y - y_buffer * 1
-var max_h = (room_height - y_buffer)/y_buffer
-var max_w = (room_width - x_buffer)/x_buffer
-var count_x = 0
-var count_y = 0
-
 if state != "inactive" {
 	
 	if state == "on_click" {
@@ -24,6 +13,8 @@ if state != "inactive" {
 	}
 	
 	if state == "open" {
+		menu_set_for(self,menu_type)
+		
 		for (var i=0;i<ds_list_size(objects);i++) {		
 			var obj = objects[| i]	
 			

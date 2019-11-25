@@ -1,0 +1,1 @@
+var body = instance_create_layer(room_width*0.4,room_height*0.5,"Instances",o_body)
