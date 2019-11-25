@@ -13,13 +13,13 @@ if state != "inactive" {
 	if state == "open" {
 		for (var i=0;i<ds_list_size(objects);i++) {
 			var obj = objects[| i]	
-			obj.visible = true
+			if obj.state == "inactive" obj.next_state = "active"
 		}	
 	}
 	if state != "open" {
 		for (var i=0;i<ds_list_size(objects);i++) {
 			var obj = objects[| i]	
-			obj.visible = false
+			obj.next_state = "inactive"
 		}	
 	}
 }
